@@ -17,7 +17,7 @@ class AppDetailDescriptionView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
         label.font = UIFont.boldSystemFont(ofSize: 35.0)
-        label.numberOfLines = 2
+        label.numberOfLines = 1
         
         return label
     }()
@@ -27,7 +27,7 @@ class AppDetailDescriptionView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .gray
         label.font = UIFont.systemFont(ofSize: 14.0)
-        label.numberOfLines = 2
+        label.numberOfLines = 1
         
         return label
     }()
@@ -37,7 +37,7 @@ class AppDetailDescriptionView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .gray
         label.font = UIFont.systemFont(ofSize: 14.0)
-        label.numberOfLines = 2
+        label.numberOfLines = 1
         
         return label
     }()
@@ -50,6 +50,7 @@ class AppDetailDescriptionView: UIView {
         label.lineBreakMode = .byWordWrapping
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 13.0)
+        
         
         return label
     }()
@@ -89,6 +90,7 @@ class AppDetailDescriptionView: UIView {
             updateDateLabel.heightAnchor.constraint(equalToConstant: 30.0),
             
             descriptionText.topAnchor.constraint(equalTo: self.versionTitle.bottomAnchor, constant: 10.0),
+            descriptionText.bottomAnchor.constraint(equalTo: self.versionTitle.bottomAnchor, constant: 100), // зафиксировал констрейнт, без него лейбл показывает только три строки при 13 шрифте
             descriptionText.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10.0),
             descriptionText.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10.0)
         ])

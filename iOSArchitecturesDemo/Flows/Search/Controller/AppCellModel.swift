@@ -22,3 +22,4 @@ final class AppCellModelFactory {
                             rating: model.averageRating >>- { "\($0)" })
     }
 }
+

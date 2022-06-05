@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class AppDetailViewController: UIViewController {
+final class AppDetailViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK: - Properties
     
@@ -16,6 +16,7 @@ final class AppDetailViewController: UIViewController {
     
     lazy var headerViewController = AppDetailHeaderViewController(app: self.app)
     lazy var descriptionViewController = AppDetailDescriptionViewController(app: self.app)
+    lazy var screenshotsViewController = AppDetailScreenshotsViewController(app: self.app)
     
     // MARK: - Construction
     
@@ -44,9 +45,11 @@ final class AppDetailViewController: UIViewController {
         
         addHeaderViewController()
         addDescriptionViewController()
+        addScreenshotsViewController()
     }
     
     private func addHeaderViewController() {
+        
         addChild(headerViewController)
         view.addSubview(headerViewController.view)
         headerViewController.didMove(toParent: self)
@@ -68,7 +71,23 @@ final class AppDetailViewController: UIViewController {
         NSLayoutConstraint.activate([
             descriptionViewController.view.topAnchor.constraint(equalTo: self.headerViewController.view.bottomAnchor),
             descriptionViewController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-            descriptionViewController.view.rightAnchor.constraint(equalTo: self.view.rightAnchor)
+            descriptionViewController.view.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+            descriptionViewController.view.heightAnchor.constraint(equalToConstant: 200)
         ])
     }
+    
+    private func addScreenshotsViewController() {
+        addChild(screenshotsViewController)
+        view.addSubview(screenshotsViewController.view)
+        screenshotsViewController.didMove(toParent: self)
+        
+        screenshotsViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            screenshotsViewController.view.topAnchor.constraint(equalTo: self.descriptionViewController.view.bottomAnchor),
+            screenshotsViewController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+            screenshotsViewController.view.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+            screenshotsViewController.view.heightAnchor.constraint(equalToConstant: 200)
+        ])
+    }
+    
 }
