@@ -20,9 +20,14 @@ class SearchModuleBuilder {
         }
         
         
-        let presenterMusic = SearchMusicPresenter()
+        let musicInteractor = SearchMusicInteractor()
+        let musicRouter = SearchMusicRouter()
+        
+        let presenterMusic = SearchMusicPresenter(interactor: musicInteractor, router: musicRouter)
         let musicViewController = SearchMusicViewController(presenter: presenterMusic)
         presenterMusic.viewInput = musicViewController
+        musicRouter.viewController = musicViewController
+        
         if #available(iOS 13.0, *) {
             musicViewController.tabBarItem = UITabBarItem(title: "Music", image: UIImage(systemName: "music.note"), selectedImage: UIImage(systemName: "music.quarternote.3"))
         } else {
